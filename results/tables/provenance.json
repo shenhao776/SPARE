@@ -1,0 +1,13 @@
+{
+  "generated": "2026-11-08T21:13:13",
+  "generator": "run_paper_tables.py::_emit_paper_csvs",
+  "commit": "9c99680",
+  "datasets": [
+    "RobotCar",
+    "4Seasons",
+    "NCLT",
+    "Boreas",
+    "CustomCampus"
+  ],
+  "note": "The three CSVs are generated directly by the replay; the row list lives in the paper_csv section of configs/paper_tables.yaml, and rows absent from the paper are never produced."
+}

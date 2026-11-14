@@ -1,0 +1,8 @@
+name: PairVPR
+model_id: PairVPR_512
+feature_dim: 512
+loader: pairvpr
+third_party: 3rdparty/Pair-VPR
+checkpoint: assets/PairVPR_512/pairvpr-vitB.pth
+config: pairvpr_speed
+transform: {type: resize_square, size: 322, interp: bilinear}

@@ -1,0 +1,11 @@
+name: star_vpr_eval
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch=2.5.1
+  - cpuonly
+  - numpy=1.26
+  - pyyaml

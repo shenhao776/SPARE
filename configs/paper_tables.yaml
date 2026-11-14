@@ -1,0 +1,161 @@
+version: 1
+
+paths:
+  assets: assets
+  trajectory: "{assets}/{model_id}/test_trajectories_{scene}{suffix}.json"
+  weight: "{assets}/{model_id}/models/{filename}"
+  classic_baselines: assets/paper_baselines
+  learned_baselines: assets/baseline_results
+  logs: logs/results
+  csv: results
+
+datasets:
+  RobotCar: {scenes: [RobotCar], aliases: [robot-car], ablation: false, decimals: 2}
+  4Seasons: {scenes: [BusinessCampus, Neighborhood, OldTown], aliases: [four-seasons], ablation: false, decimals: 2}
+  NCLT: {scenes: [NCLT], ablation: false, decimals: 2}
+  CustomCampus: {scenes: [CustomCampus], ablation: true, decimals: 2}
+  Boreas: {scenes: [Boreas], ablation: false, decimals: 1}
+  Pitts30k: {scenes: [Pitts30k], ablation: true, decimals: 1}
+  MSLS: {scenes: [MSLS], ablation: true, decimals: 1}
+
+default_head:
+  scene: UnionMaps
+  threshold: 5.0
+  members: [RobotCar, BusinessCampus, Neighborhood, OldTown, NCLT, Boreas, CustomCampus]
+
+union_heads:
+  radii: [10.0, 15.0, 25.0]
+  leave_one_out: true
+  mix_tag: UnionMapsMix
+  mix_suffix: Cmix
+
+backbones:
+  [NetVLAD, EigenPlaces, MixVPR, MegaLoc, SALAD, CricaVPR, BoQ, SuperVLAD, PairVPR]
+main_backbone: MegaLoc
+agent_backbone: MegaLoc
+thresholds_m: [5.0, 10.0, 15.0]
+seeds: [2026, 1, 2, 3, 4, 5]
+placeholders: []
+missing_cell: "-"
+
+classic_baselines:
+  Patch-NetVLAD: {slug: patchnetvlad, protocol: 2, script: tools/run_patchnetvlad_baseline.py, scene_flag: --scenes, phase: table1}
+
+reranker_pools: [MegaLoc_8448]
+
+learned_baselines:
+  TransVPR: {slug: transvpr_rerank, recorded_method: TransVPR-rerank, script: tools/run_transvpr_rerank.py}
+  R2Former: {slug: r2former_rerank, recorded_method: R2Former-rerank, script: tools/run_r2former_rerank.py}
+  VOP: {slug: vop_rerank, recorded_method: VOP-rerank, script: tools/run_vop_rerank.py}
+  PairVPR-s2: {slug: pairvpr_s2, recorded_method: PairVPR-s2, script: tools/run_pairvpr_s2_rerank.py}
+  FoL: {slug: fol_rerank, recorded_method: FoL-rerank, script: tools/run_fol_rerank.py}
+  GeoWarp: {slug: geowarp_rerank, recorded_method: GeoWarp-rerank, script: tools/run_geowarp_rerank.py}
+  RoMa-GV: {slug: roma_gv_inliers, recorded_method: RoMa-GV-inliers, script: tools/run_roma_gv_rerank.py}
+  SelaVPR: {slug: selavpr_rerank, recorded_method: SelaVPR-rerank, script: tools/run_selavpr_rerank.py}
+  DHE-VPR:
+    slug: dhe_zeroshot
+    recorded_method: DHE-zeroshot
+    script: tools/run_dhe_rerank.py
+    extra_args: ["--zero-shot"]
+
+report_only_baselines:
+  RoMa-GV-certainty: {slug: roma_gv_certainty, recorded_method: RoMa-GV-certainty}
+  PairVPR-s2-target: {slug: pairvpr_s2_target, recorded_method: PairVPR-s2-target}
+  SelaVPR-target: {slug: selavpr_target, recorded_method: SelaVPR-target}
+  GeoWarp-target: {slug: geowarp_target, recorded_method: GeoWarp-target}
+
+producers:
+  label_ratio: 1.6
+  state_splits: [train, val, test]
+  default_build_workers: 3
+  train_workers: 3
+  zoom_shuffle_seed: 2026
+  injection_tools: [inject_step_meta, add_dino_channel, inject_zoom_channel, add_vprpatch_channel]
+  random_window: {workers: 3, splits: [train, val, test]}
+  table2:
+    default_splits: [test]
+    build_retrained_default: false
+    default_workers: 3
+    heavy_workers: 3
+    heavy_backbones: [SALAD, CricaVPR, BoQ, SuperVLAD, PairVPR]
+    worker_overrides: {PairVPR: 2}
+
+main_rows:
+  - {kind: metric, label: "Raw MegaLoc", prefix: "Raw VPR Base:"}
+  - {kind: metric, label: "LightGlue", prefix: "Single-Frame Dense GV"}
+  - {kind: learned, label: "RoMa GV", method: RoMa-GV}
+  - {kind: learned, label: "RoMa GV, certainty", method: RoMa-GV-certainty}
+  - {kind: classic, label: "Patch-NetVLAD", method: "Patch-NetVLAD"}
+  - {kind: metric, label: "SUE-GV (oracle)", prefix: "SUE-Selective GV"}
+  - {kind: learned, label: GeoWarp, method: GeoWarp}
+  - {kind: learned, label: FoL, method: FoL}
+  - {kind: learned, label: "Pair-VPR (stage 2)", method: PairVPR-s2}
+  - {kind: learned, label: SelaVPR, method: SelaVPR}
+  - {kind: learned, label: R2Former, method: R2Former}
+  - {kind: learned, label: DHE-VPR, method: DHE-VPR}
+  - {kind: learned, label: VOP, method: VOP}
+  - {kind: learned, label: TransVPR, method: TransVPR}
+  - {kind: learned, label: "Pair-VPR (stage 2), fine-tuned", method: PairVPR-s2-target}
+  - {kind: learned, label: "SelaVPR, fine-tuned", method: SelaVPR-target}
+  - {kind: learned, label: "GeoWarp, fine-tuned", method: GeoWarp-target}
+  - {kind: star, label: "SPARE (ours)"}
+  - {kind: metric, label: "Top-10 upper bound", prefix: "Recall@K"}
+
+ablation_rows:
+  - {label: "Ours (single-frame, default)", default: true, overrides: {}}
+  - label: "w/o DINOv2 appearance"
+    overrides: {ABLATION_USE_DINO: false}
+  - label: "w/o VPR-tuned appearance (MegaLoc patches)"
+    overrides: {ABLATION_USE_VPRPATCH: false}
+  - label: "VPR-tuned appearance shuffled (negative control)"
+    overrides: {ABLATION_USE_VPRPATCH: false, ABLATION_USE_VPRPATCHSHUF: true}
+  - label: "w/o magnification (zoom)"
+    overrides: {ABLATION_USE_ZOOM: false}
+  - label: "w/o patch appearance (match geometry + magnification)"
+    overrides: {ABLATION_USE_DINO: false, ABLATION_USE_VPRPATCH: false}
+  - label: "w/o match geometry (patch appearance + magnification)"
+    overrides: {ABLATION_USE_CORE: false, ABLATION_USE_AREA: false}
+  - label: "Linear head (same seven inputs)"
+    overrides: {ABLATION_ARCH: single_frame_linear}
+
+prose_variants: []
+
+tables:
+  main: "Main re-ranker comparison"
+  backbones: "Cross-retriever transfer"
+  backbones_retrained: "Cross-retriever transfer (retrained control)"
+  ablation: "Component ablation"
+
+paper_csv:
+  dir: results/replay
+  datasets: [RobotCar, 4Seasons, NCLT, Boreas, CustomCampus]
+  main:
+    - {panel: B, method: "Raw MegaLoc", pool: M, from: backbone, backbone: MegaLoc, kind: Raw}
+    - {panel: B, method: "LightGlue", cite: lindenberger2023lightglue, pool: M, from: main_row, label: LightGlue}
+    - {panel: B, method: "RoMa dense-matcher GV", cite: edstedt2024roma, pool: M, from: learned, method_key: RoMa-GV, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "RoMa dense-matcher GV (certainty)", cite: edstedt2024roma, pool: M, from: learned, method_key: RoMa-GV-certainty, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "Patch-NetVLAD", cite: hausler2021patchnetvlad, pool: M, from: main_row, label: Patch-NetVLAD}
+    - {panel: B, method: "SUE-triggered GV (oracle threshold)", cite: zaffar2024estimation, pool: M, from: main_row, label: "SUE-GV (oracle)"}
+    - {panel: B, method: "GeoWarp", cite: berton2021geowarp, pool: M, from: learned, method_key: GeoWarp, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "FoL local re-ranker", cite: wang2025focus, pool: M, from: learned, method_key: FoL, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "Pair-VPR stage-2", cite: hausler2025pairvpr, pool: M, from: learned, method_key: PairVPR-s2, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "SelaVPR", cite: lu2024selavpr, pool: M, from: learned, method_key: SelaVPR, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "R2Former", cite: zhu2023r2former, pool: M, from: learned, method_key: R2Former, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "DHE-VPR", cite: lu2023dhevpr, pool: M, from: learned, method_key: DHE-VPR, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "VOP / Breaking the Frame", cite: wei2025breaking, pool: M, from: learned, method_key: VOP, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "TransVPR", cite: wang2022transvpr, pool: M, from: learned, method_key: TransVPR, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "Pair-VPR stage-2 (fine-tuned)", cite: hausler2025pairvpr, pool: M, from: learned, method_key: PairVPR-s2-target, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "SelaVPR (fine-tuned)", cite: lu2024selavpr, pool: M, from: learned, method_key: SelaVPR-target, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "GeoWarp (fine-tuned)", cite: berton2021geowarp, pool: M, from: learned, method_key: GeoWarp-target, learned_pool: MegaLoc_8448}
+    - {panel: B, method: "SPARE (ours)", pool: M, from: backbone, backbone: MegaLoc, kind: "+SPARE"}
+    - {panel: B, method: "Pool upper bound (Top-10)", pool: M, from: main_row, label: "Top-10 upper bound"}
+  ablation_variant_labels:
+    - ["Raw MegaLoc", "Raw VPR (MegaLoc, no re-ranking)"]
+    - ["SPARE (single-frame)", "Ours (single-frame, default)"]
+    - ["w/o DINO", "w/o DINOv2 appearance"]
+    - ["w/o VPR appearance", "w/o VPR-tuned appearance (MegaLoc patches)"]
+    - ["VPR appearance shuffled", "VPR-tuned appearance shuffled (negative control)"]
+    - ["w/o zoom", "w/o magnification (zoom)"]
+    - ["w/o patch appearance", "w/o patch appearance (match geometry + magnification)"]
+    - ["w/o match geometry", "w/o match geometry (patch appearance + magnification)"]
+    - ["linear head", "Linear head (same seven inputs)"]

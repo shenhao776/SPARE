@@ -1,0 +1,10 @@
+method,time_per_query
+SPARE (ours),582 ms
+SPARE stages (LightGlue / RANSAC / DINOv2 / MegaLoc patches),282 / 161 / 27 / 27 ms
+VOP,230 ms
+R2Former,188 ms
+FoL,759 ms
+SelaVPR,193 ms
+Pair-VPR (stage 2),457 ms
+GeoWarp,340 ms
+RoMa GV,9.1 s

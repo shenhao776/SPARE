@@ -1,0 +1,7 @@
+method,RobotCar,4Seasons,NCLT,Boreas,n_seeds,radius_m,source
+Raw MegaLoc,71.3,72.0,62.4,55.3,1,25,run_paper_tables.py
+Single-frame dense GV (LightGlue),76.8,76.4,57.0,69.1,1,25,run_paper_tables.py
+FoL,77.9,78.2,69.2,64.7,1,25,run_paper_tables.py
+Pair-VPR (stage 2),74.8,77.8,63.2,59.1,1,25,run_paper_tables.py
+SPARE (ours),86.3+-0.4,86.3+-0.2,67.3+-0.3,80.4+-0.3,6,25,run_paper_tables.py
+Pool upper bound (Top-10),93.4,94.1,83.2,87.0,1,25,run_paper_tables.py

@@ -1,0 +1,42 @@
+name: RobotCar
+pose_format: custom
+data_root: datasets/RobotCar
+thresholds:
+  train_m: 8.0
+  test_m: 5.0
+
+prepare:
+  tool: tools/prepare_robotcar.py
+  rtk_archive: rtk.zip
+  sessions:
+    mapping: 2015-08-13-16-02-58
+    val: 2015-05-19-14-06-38
+    test: 2015-02-24-12-32-19
+    night: 2014-11-14-16-34-33
+  spacing_m: 1.5
+  angle_deg: 10.0
+  max_pose_delta_ms: 100.0
+  bayer_pattern: gbrg
+  jpeg_quality: 95
+
+build:
+  min_dist: 1.0
+  min_angle: 10.0
+  intervals: {train: 2, val: 5, test: 10}
+  raw_root: datasets/database_raw_processed/RobotCar
+  image_subdir: images
+  map_boundary_dist: 15.0
+  splits:
+    database: [recording_mapping]
+    train: [recording_mapping]
+    val: [recording_1]
+    test: [recording_2]
+  crop: {top_excl: 0.0, bottom_excl: 0.3}
+  crop_test: {seed: 4242, warp_deg: 6.0, warp_focal_ratio: 1.0, pseudo_aug: light}
+
+sequence:
+  spatial_steps: [10, 10]
+  step_feature_tau: 0.05
+  step_max_dist: 2.5
+  step_budget: 0.226923
+  step_budget_calibrated: true

@@ -1,0 +1,7 @@
+method,benchmark,0.3-0.4 (paper),0.4-0.5,0.5-0.6,0.7-0.8,1.0 (no crop)
+GeoWarp (fine-tuned),Pitts30k,29.6,45.1,59.5,79.1,86.5
+GeoWarp (fine-tuned),MSLS,22.8,35.8,53.0,73.5,76.9
+SelaVPR (fine-tuned),Pitts30k,58.3,70.5,78.1,87.1,91.6
+SelaVPR (fine-tuned),MSLS,50.0,68.5,77.8,88.2,89.3
+PairVPR-s2 (fine-tuned),Pitts30k,59.7,71.1,77.8,86.9,91.2
+PairVPR-s2 (fine-tuned),MSLS,54.1,68.8,79.3,85.5,88.8

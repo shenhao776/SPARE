@@ -1,0 +1,68 @@
+
+defaults:
+  model: megaloc
+
+query_crop:
+  min_ratio: 0.3
+  max_ratio: 0.4
+  tilt_deg: 10.0
+  warp_deg: 0.0
+  warp_focal_ratio: 1.0
+  centered: false
+  seed: 42
+  pseudo_aug: "off"
+top_k: 10
+
+dino_k: 5
+save_img: true
+enable_sl: true
+use_general_model: false
+
+server:
+  port: 65432
+  buffer_size: 4096
+
+
+thresholds:
+  train_m: 25.0
+  test_m: 15.0
+
+max_acceptable_error: 35.0
+min_candidate_dist: 5.0
+
+reranking:
+  learning_rate: 0.003
+  batch_size: 16
+  epochs: 50
+  hidden_dim: 64
+
+geometry:
+  feature_match_min_raw: 10
+  feature_match_min_inliers: 4
+  feature_hull_min_inliers: 3
+  ransac_reproj_threshold: 5.0
+  log1p: true
+  inlier_norm_factor: 20.0
+
+ablation:
+  use_core: true
+  use_scale: true
+  input_norm: false
+  use_derivatives: false
+  use_progress: false
+  arch: single_frame
+  data_random_window: false
+  use_sim: false
+  use_area: true
+  use_dino: true
+  use_rank: false
+
+  use_pose: false
+  use_homog: false
+  use_zoom: true
+  use_shape: false
+  use_zoomshuf: false
+  use_vprpatch: true
+  use_vprpatchshuf: false
+  use_hull: false
+  use_walk: false

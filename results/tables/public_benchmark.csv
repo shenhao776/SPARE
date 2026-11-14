@@ -1,0 +1,5 @@
+row,dim,pitts30k_R@1_25m,pitts30k_R@1_15m,pitts30k_R@1_5m,msls_val_R@1_25m,msls_val_R@1_15m,msls_val_R@1_5m,source
+NetVLAD,4096,84.9,80.4,36.2,58.5,49.7,17.0,tools/eval_public_benchmark.py
+MegaLoc,8448,94.5,90.2,41.2,93.4,78.4,26.4,tools/eval_public_benchmark.py
+BoQ,12288,93.7,90.8,42.5,93.8,79.1,26.6,tools/eval_public_benchmark.py
+Oracle (any database image),-,100.0,95.4,59.9,100.0,98.2,64.1,tools/eval_public_benchmark.py

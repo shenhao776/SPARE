@@ -1,0 +1,7 @@
+name: MixVPR
+model_id: MixVPR_4096
+feature_dim: 4096
+loader: mixvpr
+third_party: 3rdparty/MixVPR
+checkpoint: assets/MixVPR_4096/resnet50_MixVPR_4096.ckpt
+transform: {type: multiple_of_14, short_edge: 322}

@@ -1,0 +1,7 @@
+metric,base,fol,star
+retrieval_5_10_15,28.1/51.4/69.7,30.3/59.7/75.6,42.9/75.6/86.4
+seed_within_basin,422/821,487/821,621/821
+reloc_success,475/821,535/821,648/821
+reloc_given_near,407/422,467/487,606/621
+reloc_given_far,68/399,68/334,42/200
+reloc_seconds,5.8,5.0,4.9

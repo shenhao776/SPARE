@@ -1,0 +1,313 @@
+{
+  "Boreas": {
+    "params": {
+      "build": {
+        "crop_bottom_excl": 0.1,
+        "crop_top_excl": 0.15,
+        "full_frame_recordings": [],
+        "image_subdir": ".",
+        "intervals": {
+          "test": 1,
+          "train": 2,
+          "val": 2
+        },
+        "map_boundary_dist": 15.0,
+        "min_angle": 10.0,
+        "min_dist": 1.0
+      },
+      "crop": {
+        "bottom_excl": 0.1,
+        "centered": false,
+        "max_ratio": 0.4,
+        "min_ratio": 0.3,
+        "pseudo_aug": "off",
+        "seed": 42,
+        "tilt_deg": 10.0,
+        "top_excl": 0.15
+      },
+      "opencv": "4.11.0"
+    },
+    "splits": {
+      "database": {
+        "bytes": 7299606878,
+        "digest": "8c3fe926dfa6a99872ac43548db2d132",
+        "n": 1852
+      },
+      "queries_test": {
+        "bytes": 4838105895,
+        "digest": "3603d761822b96081247a66ed380a26b",
+        "n": 1638
+      },
+      "queries_train": {
+        "bytes": 3329021884,
+        "digest": "06c1ce2e93978be487edb6ff413036ad",
+        "n": 927
+      },
+      "queries_val": {
+        "bytes": 1234399768,
+        "digest": "a9b42a5a8f2f686d2a2569aa4013ee1b",
+        "n": 409
+      }
+    }
+  },
+  "BusinessCampus": {
+    "params": {
+      "build": {
+        "crop_bottom_excl": 0.3,
+        "crop_top_excl": 0.0,
+        "full_frame_recordings": [],
+        "image_subdir": "undistorted_images",
+        "intervals": {
+          "test": 6,
+          "train": 1,
+          "val": 3
+        },
+        "map_boundary_dist": 15.0,
+        "min_angle": 10.0,
+        "min_dist": 1.0
+      },
+      "crop": {
+        "bottom_excl": 0.3,
+        "centered": false,
+        "max_ratio": 0.4,
+        "min_ratio": 0.3,
+        "pseudo_aug": "off",
+        "seed": 42,
+        "tilt_deg": 10.0,
+        "top_excl": 0.0
+      },
+      "opencv": "4.11.0"
+    },
+    "splits": {
+      "database": {
+        "bytes": 294316969,
+        "digest": "b635abce6776953851cf367c77a9c0c8",
+        "n": 2040
+      },
+      "queries_test": {
+        "bytes": 89350341,
+        "digest": "ee9c48d08a6db91f8bad7b2066547833",
+        "n": 385
+      },
+      "queries_train": {
+        "bytes": 475888371,
+        "digest": "13406f33ba2ff6e7adc928ca014156aa",
+        "n": 2040
+      },
+      "queries_val": {
+        "bytes": 158716749,
+        "digest": "ff42ab6bcd311c8e1be8b7c25549f6e8",
+        "n": 757
+      }
+    }
+  },
+  "CustomCampus": {
+    "params": {
+      "build": {
+        "crop_bottom_excl": 0.3,
+        "crop_top_excl": 0.0,
+        "full_frame_recordings": [
+          "recording_day",
+          "recording_dusk",
+          "recording_full",
+          "recording_night"
+        ],
+        "image_subdir": "undistorted_images",
+        "intervals": {
+          "test": 1,
+          "train": 2,
+          "val": 2
+        },
+        "map_boundary_dist": 15.0,
+        "min_angle": 10.0,
+        "min_dist": 0.3
+      },
+      "crop": {
+        "bottom_excl": 0.3,
+        "centered": false,
+        "max_ratio": 0.4,
+        "min_ratio": 0.3,
+        "pseudo_aug": "off",
+        "seed": 42,
+        "tilt_deg": 10.0,
+        "top_excl": 0.0
+      },
+      "opencv": "4.11.0"
+    },
+    "splits": {
+      "database": {
+        "bytes": 1179946984,
+        "digest": "d1046d421fe9b68bb8ce927383278c64",
+        "n": 3431
+      },
+      "queries_test": {
+        "bytes": 300490197,
+        "digest": "d4d29a11058067de5cf4ac8307eec4b7",
+        "n": 827
+      },
+      "queries_train": {
+        "bytes": 275942773,
+        "digest": "01109214f7954ffd23136c46fd837de4",
+        "n": 1716
+      },
+      "queries_val": {
+        "bytes": 111792646,
+        "digest": "6625e726f9eee1e274a0b7391e39983c",
+        "n": 651
+      }
+    }
+  },
+  "NCLT": {
+    "params": {
+      "build": {
+        "crop_bottom_excl": 0.2,
+        "crop_top_excl": 0.2,
+        "full_frame_recordings": [],
+        "image_subdir": "undistorted_images",
+        "intervals": {
+          "test": 3,
+          "train": 2,
+          "val": 3
+        },
+        "map_boundary_dist": 15.0,
+        "min_angle": 10.0,
+        "min_dist": 1.5
+      },
+      "crop": {
+        "bottom_excl": 0.2,
+        "centered": false,
+        "max_ratio": 0.4,
+        "min_ratio": 0.3,
+        "pseudo_aug": "off",
+        "seed": 42,
+        "tilt_deg": 10.0,
+        "top_excl": 0.2
+      },
+      "opencv": "4.11.0"
+    },
+    "splits": {
+      "database": {
+        "bytes": 1643981077,
+        "digest": "dffee607be88129aad6b8171bea9ff2c",
+        "n": 2621
+      },
+      "queries_test": {
+        "bytes": 1568120841,
+        "digest": "dcdf7a6001fde3774e25e8f766a4d55b",
+        "n": 703
+      },
+      "queries_train": {
+        "bytes": 2937007891,
+        "digest": "d09953b18e82e9eafcc79593cb1c1e6f",
+        "n": 1311
+      },
+      "queries_val": {
+        "bytes": 1435909294,
+        "digest": "b4f277f808bd154132058fa82b8d058b",
+        "n": 656
+      }
+    }
+  },
+  "Neighborhood": {
+    "params": {
+      "build": {
+        "crop_bottom_excl": 0.3,
+        "crop_top_excl": 0.0,
+        "full_frame_recordings": [],
+        "image_subdir": "undistorted_images",
+        "intervals": {
+          "test": 6,
+          "train": 1,
+          "val": 3
+        },
+        "map_boundary_dist": 15.0,
+        "min_angle": 10.0,
+        "min_dist": 1.0
+      },
+      "crop": {
+        "bottom_excl": 0.3,
+        "centered": false,
+        "max_ratio": 0.4,
+        "min_ratio": 0.3,
+        "pseudo_aug": "off",
+        "seed": 42,
+        "tilt_deg": 10.0,
+        "top_excl": 0.0
+      },
+      "opencv": "4.11.0"
+    },
+    "splits": {
+      "database": {
+        "bytes": 204734461,
+        "digest": "4e2be4b3cc26ebaeb3f5a7a6b9654118",
+        "n": 1517
+      },
+      "queries_test": {
+        "bytes": 53445715,
+        "digest": "e5418c41cea8d00ba03c276cd256d7e9",
+        "n": 258
+      },
+      "queries_train": {
+        "bytes": 302149379,
+        "digest": "8a41c7e312b7503f210932c2d3ca5ff6",
+        "n": 1517
+      },
+      "queries_val": {
+        "bytes": 102542844,
+        "digest": "c24f9d55a2a2efec487e2664f44509b8",
+        "n": 422
+      }
+    }
+  },
+  "OldTown": {
+    "params": {
+      "build": {
+        "crop_bottom_excl": 0.3,
+        "crop_top_excl": 0.0,
+        "full_frame_recordings": [],
+        "image_subdir": "undistorted_images",
+        "intervals": {
+          "test": 10,
+          "train": 2,
+          "val": 5
+        },
+        "map_boundary_dist": 15.0,
+        "min_angle": 10.0,
+        "min_dist": 1.0
+      },
+      "crop": {
+        "bottom_excl": 0.3,
+        "centered": false,
+        "max_ratio": 0.4,
+        "min_ratio": 0.3,
+        "pseudo_aug": "off",
+        "seed": 42,
+        "tilt_deg": 10.0,
+        "top_excl": 0.0
+      },
+      "opencv": "4.11.0"
+    },
+    "splits": {
+      "database": {
+        "bytes": 451181813,
+        "digest": "32d009a9d5324db4bc65098ef77621fe",
+        "n": 3591
+      },
+      "queries_test": {
+        "bytes": 96116985,
+        "digest": "75f6d733dc7ffe26a3e279777e2e2078",
+        "n": 361
+      },
+      "queries_train": {
+        "bytes": 336651282,
+        "digest": "5266118f709c4606b948d6a25a4aa050",
+        "n": 1797
+      },
+      "queries_val": {
+        "bytes": 155237832,
+        "digest": "16cd7d7ca2d84168140929a2e849aba7",
+        "n": 712
+      }
+    }
+  }
+}

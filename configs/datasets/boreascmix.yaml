@@ -1,0 +1,26 @@
+name: BoreasCmix
+pose_format: custom
+data_root: datasets/BoreasCmix
+thresholds:
+  train_m: 8.0
+  test_m: 5.0
+eval_exclude_keys: 0
+build:
+  min_dist: 1.0
+  min_angle: 10.0
+  intervals: {train: 2, val: 2, test: 12}
+  raw_root: datasets/database_raw_processed/Boreas
+  image_subdir: "."
+  map_boundary_dist: 15.0
+  splits:
+    database: [recording_mapping]
+    train:    [recording_mapping]
+    val:      [recording_1]
+    test:     [recording_2]
+  crop: {top_excl: 0.15, bottom_excl: 0.1, min_ratio: 0.3, max_ratio: 1.0}
+
+sequence:
+  spatial_steps: [10, 10]
+  step_feature_tau: 0.05
+  step_max_dist: 2.5
+  step_budget: 0.271414

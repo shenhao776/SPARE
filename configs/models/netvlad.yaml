@@ -1,0 +1,6 @@
+name: NetVLAD
+model_id: NetVLAD_4096
+feature_dim: 4096
+backbone: VGG16
+loader: custom
+transform: {type: max_edge_plain, max_edge: 640}

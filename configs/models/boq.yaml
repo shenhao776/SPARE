@@ -1,0 +1,8 @@
+name: BoQ
+model_id: BoQ_dinov2_12288
+feature_dim: 12288
+loader: boq
+third_party: 3rdparty/Bag-of-Queries
+backbone: dinov2
+output_dim: 12288
+transform: {type: resize_square, size: 322, interp: bicubic}

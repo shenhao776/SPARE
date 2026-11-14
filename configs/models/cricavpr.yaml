@@ -1,0 +1,8 @@
+name: CricaVPR
+model_id: CricaVPR_10752
+feature_dim: 10752
+loader: cricavpr
+third_party: 3rdparty/CricaVPR
+foundation_model_path: assets/CricaVPR_10752/dinov2_vitb14_pretrain.pth
+checkpoint: assets/CricaVPR_10752/CricaVPR.pth
+transform: {type: resize_square, size: 224, interp: bicubic}

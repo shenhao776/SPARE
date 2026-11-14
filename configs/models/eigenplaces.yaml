@@ -1,0 +1,9 @@
+name: EigenPlaces
+model_id: EigenPlaces_ResNet50_2048
+feature_dim: 2048
+backbone: ResNet50
+loader: torch_hub
+hub_repo: gmberton/eigenplaces:main
+hub_entry: get_trained_model
+hub_kwargs: {backbone: ResNet50, fc_output_dim: 2048}
+transform: {type: multiple_of_14, short_edge: 322}

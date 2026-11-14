@@ -1,0 +1,28 @@
+name: Pitts30kCmix
+pose_format: custom
+data_root: datasets/Pitts30kCmix
+prepare:
+  tool: tools/prepare_pitts30k.py
+thresholds:
+  train_m: 40.0
+  test_m: 25.0
+eval_exclude_keys: 0
+build:
+  min_dist: 0.5
+  min_angle: 10.0
+  intervals: {train: 4, val: 4, test: 1}
+  raw_root: datasets/database_raw_processed/Pitts30k
+  image_subdir: "."
+  map_boundary_dist: 1000.0
+  splits:
+    database: [recording_mapping]
+    train:    [recording_mapping]
+    val:      [recording_val]
+    test:     [recording_test]
+  crop: {top_excl: 0.0, bottom_excl: 0.0, min_ratio: 0.3, max_ratio: 1.0}
+  crop_test: {seed: 4242, warp_deg: 6.0, warp_focal_ratio: 1.0, pseudo_aug: light}
+sequence:
+  spatial_steps: [0, 0]
+  step_feature_tau: 0.05
+  step_max_dist: 2.5
+  step_budget: 1.0

@@ -1,0 +1,7 @@
+name: SALAD
+model_id: SALAD_8448
+feature_dim: 8448
+loader: torch_hub
+hub_repo: serizba/salad:main
+hub_entry: dinov2_salad
+transform: {type: multiple_of_14, short_edge: 322}

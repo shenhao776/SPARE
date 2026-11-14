@@ -1,0 +1,3 @@
+pair,n,both,only_spare,only_other,neither,mcnemar_exact_p
+star_vs_raw_yaw60,821,429,219,46,127,0.0000
+star_vs_fol_yaw60,821,484,164,51,122,0.0000

@@ -1,0 +1,50 @@
+{
+  "boq/dinov2_12288": {
+    "bytes": 380916283,
+    "sha256": "d72ee0ce899e2790be6cf6d1d57f75dfad0c76475bd2198e6dc0c3f0221b3583"
+  },
+  "cricavpr/CricaVPR": {
+    "bytes": 588840667,
+    "sha256": "e3102d28e07df60b9f82003e96b44feb3debe1827f7d90143180174c3ad8e046"
+  },
+  "dinov2/vitb14_pretrain": {
+    "bytes": 346378731,
+    "sha256": "0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73"
+  },
+  "eigenplaces/resnet50": {
+    "bytes": 111138056,
+    "sha256": "98e8e21e9364a7e0990a9d7e1de5853b6d830f7f73d6bd9ee4f397575e0d41d1"
+  },
+  "lightglue/matcher": {
+    "bytes": 47500279,
+    "sha256": "6ff7040d0a497fc6639337946d7538dae07428c18f77a067a0b5a960e7cc551a"
+  },
+  "lightglue/superpoint": {
+    "bytes": 5206086,
+    "sha256": "52b6708629640ca883673b5d5c097c4ddad37d8048b33f09c8ca0d69db12c40e"
+  },
+  "megaloc/model.safetensors": {
+    "bytes": 914577436,
+    "sha256": "d4f9f2bcb60018f91eb6a8e061ed054fd55654e10c2569cf13841ea986ffb4f8"
+  },
+  "mixvpr/resnet50": {
+    "bytes": 43747109,
+    "sha256": "97528606773e9920e93ca4d211daeabf1c7312480f38b45379ee5551a1b4dd24"
+  },
+  "netvlad/vgg16": {
+    "bytes": 553433881,
+    "sha256": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0"
+  },
+  "pairvpr/pairvpr-vitB": {
+    "bytes": 810860658,
+    "sha256": "18e7b95ba57d4d578fbf0a06a1846fc2dfb976c74da56bfd7d6a68afbcea8423"
+  },
+  "salad/dino_salad.ckpt": {
+    "bytes": 352040378,
+    "sha256": "6b3f1720954293e83da6966c5cfcfc6713200d7fefadcca76fc51aeb80b3cada"
+  },
+  "supervlad/SuperVLAD": {
+    "bytes": 705713410,
+    "sha256": "a973cc2ccb27d2ca17ec5315b06c3b0bf80efb7300c100d3bcd43280e1693fd1"
+  }
+}

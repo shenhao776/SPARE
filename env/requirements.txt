@@ -1,0 +1,15 @@
+
+numpy<2.0
+scipy
+PyYAML
+Pillow
+tqdm
+einops
+opencv-python>=4.8
+faiss-cpu>=1.7
+kornia>=0.7
+matplotlib
+timm>=0.9
+transformers>=4.30
+gdown>=5.2
+lightglue @ git+https://github.com/cvg/LightGlue.git@eb42fee2d71449efb0aa5c10549752b5d75384d8

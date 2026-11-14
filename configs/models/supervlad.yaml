@@ -1,0 +1,13 @@
+name: SuperVLAD
+model_id: SuperVLAD_3072
+feature_dim: 3072
+loader: supervlad
+third_party: 3rdparty/SuperVLAD
+backbone: dino
+clusters: 4
+ghost_clusters: 1
+cross_image_encoder: true
+freeze_te: 8
+foundation_model_path: assets/SuperVLAD_3072/dinov2_vitb14_pretrain.pth
+checkpoint: assets/SuperVLAD_3072/SuperVLAD.pth
+transform: {type: resize_square, size: 322, interp: bilinear}

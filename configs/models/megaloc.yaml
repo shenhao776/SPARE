@@ -1,0 +1,7 @@
+name: MegaLoc
+model_id: MegaLoc_8448
+feature_dim: 8448
+loader: torch_hub
+hub_repo: gmberton/MegaLoc:main
+hub_entry: get_trained_model
+transform: {type: multiple_of_14, short_edge: 322}

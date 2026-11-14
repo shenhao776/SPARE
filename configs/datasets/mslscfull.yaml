@@ -1,0 +1,27 @@
+name: MSLSCfull
+pose_format: custom
+data_root: datasets/MSLSCfull
+prepare:
+  tool: tools/prepare_msls.py
+thresholds:
+  train_m: 40.0
+  test_m: 25.0
+eval_exclude_keys: 0
+build:
+  min_dist: 0.0
+  min_angle: 0.0
+  intervals: {train: 7, val: 7, test: 1}
+  raw_root: datasets/database_raw_processed/MSLS
+  image_subdir: "."
+  map_boundary_dist: 1000.0
+  splits:
+    database: [recording_mapping]
+    train:    [recording_mapping]
+    val:      [recording_val]
+    test:     [recording_test]
+  crop: {top_excl: 0.0, bottom_excl: 0.0, min_ratio: 1.0, max_ratio: 1.0, tilt_deg: 0, centered: true}
+sequence:
+  spatial_steps: [0, 0]
+  step_feature_tau: 0.05
+  step_max_dist: 2.5
+  step_budget: 1.0
