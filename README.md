@@ -123,6 +123,8 @@ values. Both exit non-zero if a number differs.
 `extra_reproduce.py` also replays numbers quoted in the text: the field-of-view channel ablation
 of Sec. V-E (`--parts channels`), MegaLoc under the standard evaluation of Sec. I
 (`--parts standard`). Table 7 is replayed from the recorded timing run.
+`tools/bootstrap_ci.py` recomputes the 95% bootstrap confidence intervals quoted in the text
+(paired over test queries, and over 20 contiguous time blocks for the robot trials).
 
 **Fine-tuned baselines.** The rows marked † in Tables 1, 2 and 5 fine-tune Pair-VPR (stage 2),
 SelaVPR and GeoWarp from their released weights on the same pseudo-queries as SPARE, each with
